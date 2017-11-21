@@ -296,6 +296,7 @@ class UpdateWorker(Qt.QThread):
         print(self.addon[5][1])
         response = OpenWithRetry(self.addon[5][1])
         filename = "{}/{}".format(tempfile.gettempdir(), self.addon[5][1].split('/')[-2])
+        settings = Qt.QSettings()
         dest = "{}/Interface/AddOns/".format(settings.value(defines.WOW_FOLDER_KEY, defines.WOW_FOLDER_DEFAULT))
         with open(filename, 'wb') as zipped:
             zipped.write(response.read())
